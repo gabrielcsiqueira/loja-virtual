@@ -1,5 +1,6 @@
 package com.example.lojavirtual.model;
 
+import com.example.lojavirtual.enums.TipoEndereco;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -33,7 +34,7 @@ public class Endereco implements Serializable {
     @ManyToOne(targetEntity = Pessoa.class)
     @JoinColumn(name = "pessoa_id", nullable = false, foreignKey = @ForeignKey(value = ConstraintMode.CONSTRAINT, name = "pessoa_fk"))
     private Pessoa pessoa;
-    @Column(name = "tipo_endereco")
-    private String tipoEndereco;
+    @Enumerated(EnumType.STRING)
+    private TipoEndereco tipoEndereco;
 
 }

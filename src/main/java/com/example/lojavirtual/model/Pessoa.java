@@ -15,6 +15,7 @@ public abstract class Pessoa implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_pessoa")
     @Column(name = "id")
     private Long id;
     @Column(name = "email")
@@ -24,7 +25,9 @@ public abstract class Pessoa implements Serializable {
     @Column(name = "telefone")
     private String telefone;
     @OneToMany(mappedBy = "pessoa", orphanRemoval = true, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Endereco> enderecos = new ArrayList<Endereco>();
+    private List<Endereco> enderecos = new ArrayList<>();
+    @OneToMany(mappedBy = "pessoa", orphanRemoval = true, cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<ContaReceber> contasReceber = new ArrayList<>();
 
 
 }
